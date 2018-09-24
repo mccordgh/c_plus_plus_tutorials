@@ -6,4 +6,5 @@
 
 ## Instructions:
  - You are the `O`
+ - Use the Arrow Keys to move.
  - Move and pick up the numbers: `1`, `2`, `3`, `4` then you win!

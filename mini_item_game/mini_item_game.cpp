@@ -11,41 +11,11 @@ class Item
         bool found;
 };
 
-// const int worldHeight = 16, worldWidth = 32;
-int playerX = 4, prevX = 4, playerY = 4, prevY = 4, score = 0;
 Item item1, item2, item3, item4;
 
-// const char * player = "O", item = "u", monster = "X";
-
-// WINDOW * win = newwin(worldHeight, worldWidth, 4, 4);
-
-bool gameOver = false;
-
-// #define KEY_UP 72
-// #define KEY_DOWN 80
-// #define KEY_LEFT 75
-// #define KEY_RIGHT 77
+int playerX = 4, prevX = 4, playerY = 4, prevY = 4, score = 0;
 
 void drawWorld(), initItems(), getInput(), updateScore(), checkCollisions(), drawItems(), increaseScore(), youWin(), pressEnter();
-
-// string world[worldHeight][worldWidth] = {
-//     {"*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
-//     {"*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"},
-// };
 
 int main()
 {
@@ -57,26 +27,23 @@ int main()
     keypad(stdscr, TRUE);
     nodelay(stdscr, TRUE);
     start_color();
-    // attron(COLOR_PAIR(2));
     border(0, 0, 0, 0, 0, 0, 0, 0);
 
-    // world[playerStartY][playerStartX] = player;
     initItems();
     drawItems();
-
-    // while (gameOver == false)
     updateScore();
 
     while (1)
     {
         getInput();
-        
+
         if (score >= 4)
         {
             youWin();
             pressEnter();
-        } else {
-
+        } 
+        else
+        {
             move(playerY, playerX);
 
             checkCollisions();
@@ -87,7 +54,6 @@ int main()
 
         refresh();
     }
-
 };
 
 void pressEnter()
@@ -160,29 +126,17 @@ void youWin()
 }
 
 void drawItems() {
-    // if (item1.found == false)
-    // {
-        move(item1.y, item1.x);
-        addstr("1");
-    // }
+    move(item1.y, item1.x);
+    addstr("1");
 
-    // if (item2.found == false)
-    // {
-        move(item2.y, item2.x);
-        addstr("2");
-    // }
+    move(item2.y, item2.x);
+    addstr("2");
 
-    // if (item3.found == false)
-    // {
-        move(item3.y, item3.x);
-        addstr("3");
-    // }
+    move(item3.y, item3.x);
+    addstr("3");
 
-    // if (item1.found == false)
-    // {
-        move(item4.y, item4.x);
-        addstr("4");
-    // }
+    move(item4.y, item4.x);
+    addstr("4");
 }
 
 void checkCollisions()
@@ -220,22 +174,18 @@ void increaseScore()
 
 void initItems()
 {
-    // move(4, 8);
     item1.y = 4;
     item1.x = 8;
     item1.found = false;
 
-    // move(4, 24);
     item2.y = 4;
     item2.x = 24;
     item2.found = false;
 
-    // move(12, 8);
     item3.y = 12;
     item3.x = 8;
     item3.found = false;
 
-    // move(12, 24);
     item4.y = 12;
     item4.x = 24;
     item4.found = false;
@@ -248,7 +198,7 @@ void getInput()
 
     if (input == ERR)
     {
-        //
+        // Ignore input error if no input detected
     } else {
         switch(input) {
             case KEY_UP:

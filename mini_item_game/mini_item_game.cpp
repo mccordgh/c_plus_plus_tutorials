@@ -5,7 +5,9 @@ using namespace std;
 int main()
 {
     string padding = "\t\t";
-    const int worldHeight = 16, worldWidth = 32;
+    const int worldHeight = 16, worldWidth = 32, playerStartX = 16, playerStartY = 8;
+
+    const string player = "O", item = "u", monster = "X";
 
     string world[worldHeight][worldWidth] = {
         {"*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"},
@@ -25,6 +27,13 @@ int main()
         {"*", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "*"},
         {"*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"},
     };
+
+    world[playerStartY][playerStartX] = player;
+
+    world[4][8] = item;
+    world[4][24] = item;
+    world[12][8] = item;
+    world[12][24] = item;
 
     cout << endl;
 
